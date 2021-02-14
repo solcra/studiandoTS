@@ -1,0 +1,3 @@
+Comando para ejecutar el compilador -> tsc
+Mantener ejecuntando las modificaciones -> tsc --watch
+mirar errores de null -> tsc <numbre archivo> --strictNullChecks
