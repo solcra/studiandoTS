@@ -1,0 +1,15 @@
+"use strict";
+//import {User, Album, Picture,PhotoOrientation} from './photo-app';
+Object.defineProperty(exports, "__esModule", { value: true });
+const albun_1 = require("./albun");
+const photo_orientations_1 = require("./photo-orientations");
+const picture_1 = require("./picture");
+const user_1 = require("./user");
+const user = new user_1.User(1, 'Solcra', 'Carlos', true);
+const albun = new albun_1.Album(10, 'Primeras fotod');
+const picture = new picture_1.Picture(1, 'Titulo del la pintura', '2021', photo_orientations_1.PhotoOrientation.Panorama);
+user.addAlbum(albun);
+albun.addPictur(picture);
+console.log('user', user);
+user.removeAlbum(albun);
+console.log('user', user);
