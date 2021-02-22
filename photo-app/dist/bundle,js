@@ -1,0 +1,165 @@
+/******/ (() => { // webpackBootstrap
+/******/ 	"use strict";
+/******/ 	var __webpack_modules__ = ({
+
+/***/ 109:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.Album = void 0;
+const item_1 = __webpack_require__(123);
+class Album extends item_1.Item {
+    constructor(id, title) {
+        super(id, title);
+        this.picture = [];
+    }
+    addPictur(picture) {
+        this.picture.push(picture);
+    }
+}
+exports.Album = Album;
+
+
+/***/ }),
+
+/***/ 123:
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.Item = void 0;
+class Item {
+    constructor(id, title) {
+        this.id = id;
+        this.title = title;
+    }
+}
+exports.Item = Item;
+
+
+/***/ }),
+
+/***/ 920:
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.PhotoOrientation = void 0;
+var PhotoOrientation;
+(function (PhotoOrientation) {
+    PhotoOrientation[PhotoOrientation["Landscape"] = 0] = "Landscape";
+    PhotoOrientation[PhotoOrientation["Portrait"] = 1] = "Portrait";
+    PhotoOrientation[PhotoOrientation["Square"] = 2] = "Square";
+    PhotoOrientation[PhotoOrientation["Panorama"] = 3] = "Panorama";
+})(PhotoOrientation = exports.PhotoOrientation || (exports.PhotoOrientation = {}));
+
+
+/***/ }),
+
+/***/ 449:
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.Picture = void 0;
+const item_1 = __webpack_require__(123);
+class Picture extends item_1.Item {
+    constructor(id, title, _date, _orientation) {
+        super(id, title);
+        this._date = _date;
+        this._orientation = _orientation;
+    }
+    toString() {
+        return `[id: ${this.id}, title: ${this.title}, orientation: ${this._orientation}]`;
+    }
+}
+exports.Picture = Picture;
+
+
+/***/ }),
+
+/***/ 536:
+/***/ ((__unused_webpack_module, exports) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.User = void 0;
+class User {
+    constructor(id, username, firstName, isPro) {
+        this.id = id;
+        this.username = username;
+        this.firstName = firstName;
+        this.isPro = isPro;
+        this.album = [];
+    }
+    addAlbum(album) {
+        this.album.push(album);
+    }
+    removeAlbum(album) {
+        // Buscar Album
+        const index = this.album.findIndex(a => a.id === album.id);
+        let deletedAlbum;
+        if (index >= 0) {
+            deletedAlbum = this.album[index];
+            this.album.splice(index, 1);
+        }
+        return deletedAlbum;
+    }
+}
+exports.User = User;
+
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		if(__webpack_module_cache__[moduleId]) {
+/******/ 			return __webpack_module_cache__[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/ 	
+/************************************************************************/
+var __webpack_exports__ = {};
+// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
+(() => {
+var exports = __webpack_exports__;
+var __webpack_unused_export__;
+
+//import {User, Album, Picture,PhotoOrientation} from './photo-app';
+__webpack_unused_export__ = ({ value: true });
+const albun_1 = __webpack_require__(109);
+const photo_orientations_1 = __webpack_require__(920);
+const picture_1 = __webpack_require__(449);
+const user_1 = __webpack_require__(536);
+const user = new user_1.User(1, 'Solcra', 'Carlos', true);
+const albun = new albun_1.Album(10, 'Primeras fotod');
+const picture = new picture_1.Picture(1, 'Titulo del la pintura', '2021', photo_orientations_1.PhotoOrientation.Panorama);
+user.addAlbum(albun);
+albun.addPictur(picture);
+console.log('user', user);
+user.removeAlbum(albun);
+console.log('user', user);
+
+})();
+
+/******/ })()
+;
